@@ -28,7 +28,7 @@
             background: rgba(25, 18, 45, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            padding: 12px 14px 16px;
+            padding: 10px 12px 14px;
             box-shadow: none;
             border: none;
             border-radius: 0;
@@ -66,13 +66,13 @@
         h1 {
             text-align: center;
             font-weight: 400;
-            font-size: 1.7rem;
+            font-size: 1.6rem;
             letter-spacing: 1px;
             color: #e8d5f5;
             text-shadow: 0 4px 20px #000000aa, 0 0 30px rgba(160, 120, 220, 0.15);
             border-bottom: 1px solid rgba(180, 130, 255, 0.2);
-            padding-bottom: 10px;
-            margin-bottom: 10px;
+            padding-bottom: 8px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -83,9 +83,9 @@
             z-index: 1;
         }
         h1 small {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             background: rgba(160, 120, 220, 0.15);
-            padding: 2px 14px;
+            padding: 2px 12px;
             border-radius: 80px;
             font-weight: 300;
             color: #d4c0e8;
@@ -98,8 +98,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
-            gap: 8px;
+            margin-bottom: 6px;
+            gap: 6px;
             flex-wrap: wrap;
             flex-shrink: 0;
             position: relative;
@@ -109,9 +109,9 @@
             background: rgba(47, 34, 63, 0.8);
             border: 1px solid rgba(160, 120, 220, 0.3);
             color: #d4c0e8;
-            padding: 8px 16px;
+            padding: 10px 18px;
             border-radius: 40px;
-            font-size: 0.95rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.25s ease;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
@@ -119,6 +119,9 @@
             align-items: center;
             gap: 6px;
             backdrop-filter: blur(4px);
+            min-height: 44px;
+            min-width: 80px;
+            justify-content: center;
         }
         .btn-home:hover {
             background: rgba(93, 68, 115, 0.8);
@@ -138,13 +141,16 @@
             font-weight: 300;
             letter-spacing: 0.5px;
             background: rgba(47, 34, 63, 0.5);
-            padding: 4px 14px;
+            padding: 6px 14px;
             border-radius: 40px;
             border: 1px solid rgba(160, 120, 220, 0.15);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             max-width: 50%;
+            min-height: 36px;
+            display: flex;
+            align-items: center;
         }
         .category-label span {
             font-weight: 500;
@@ -183,7 +189,7 @@
             box-shadow: 4px 0 40px rgba(0, 0, 0, 0.8);
             z-index: 1000;
             transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 18px 12px 20px;
+            padding: 16px 10px 18px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -207,14 +213,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 12px;
+            padding-bottom: 10px;
             border-bottom: 1px solid rgba(160, 120, 220, 0.15);
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             flex-shrink: 0;
         }
         .sidebar-title {
             color: #e8d5f5;
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 400;
             letter-spacing: 1px;
             display: flex;
@@ -222,7 +228,7 @@
             gap: 8px;
         }
         .sidebar-title small {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: rgba(180, 160, 200, 0.5);
             font-weight: 300;
         }
@@ -230,14 +236,17 @@
             background: rgba(47, 34, 63, 0.6);
             border: 1px solid rgba(160, 120, 220, 0.2);
             color: #c8b8d8;
-            padding: 4px 12px;
+            padding: 6px 14px;
             border-radius: 40px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
             gap: 4px;
+            min-height: 36px;
+            min-width: 40px;
+            justify-content: center;
         }
         .btn-close-sidebar:hover {
             background: rgba(93, 68, 115, 0.8);
@@ -256,9 +265,9 @@
             background: rgba(47, 34, 63, 0.4);
             border: 1px solid rgba(160, 120, 220, 0.08);
             color: #c8b8d8;
-            padding: 8px 12px;
+            padding: 10px 12px;
             border-radius: 10px;
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -266,6 +275,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            min-height: 44px;
         }
         .sidebar-categories .cat-btn:hover {
             background: rgba(93, 68, 115, 0.5);
@@ -287,13 +297,13 @@
         }
         .sidebar-categories .cat-btn .cat-name {
             flex: 1;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
         }
         .sidebar-categories .cat-btn .cat-count {
             font-size: 0.6rem;
             color: rgba(180, 160, 200, 0.4);
             background: rgba(47, 34, 63, 0.4);
-            padding: 1px 8px;
+            padding: 2px 8px;
             border-radius: 20px;
         }
         .sidebar-categories .cat-btn.active .cat-count {
@@ -302,12 +312,12 @@
         }
 
         .sidebar-footer {
-            margin-top: 10px;
-            padding-top: 10px;
+            margin-top: 8px;
+            padding-top: 8px;
             border-top: 1px solid rgba(160, 120, 220, 0.1);
             flex-shrink: 0;
             color: rgba(180, 160, 200, 0.3);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             text-align: center;
             letter-spacing: 0.5px;
         }
@@ -315,8 +325,8 @@
         /* Question Panel */
         .question-panel {
             background: rgba(26, 18, 42, 0.85);
-            border-radius: 24px;
-            padding: 14px 16px 14px;
+            border-radius: 22px;
+            padding: 12px 14px 12px;
             border: 1px solid rgba(160, 120, 220, 0.15);
             box-shadow: inset 0 4px 20px rgba(0,0,0,0.4), 0 8px 30px rgba(0,0,0,0.4);
             backdrop-filter: blur(4px);
@@ -334,7 +344,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            border-radius: 24px;
+            border-radius: 22px;
             background: linear-gradient(135deg, rgba(160, 120, 220, 0.04), transparent 60%);
             pointer-events: none;
         }
@@ -343,8 +353,8 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 8px;
+            gap: 5px;
+            margin-bottom: 6px;
             position: relative;
             z-index: 1;
             flex-shrink: 0;
@@ -352,7 +362,7 @@
         .q-header-left {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             flex-wrap: wrap;
         }
         .q-number {
@@ -360,27 +370,33 @@
             color: #d4c0e8;
             letter-spacing: 1px;
             background: rgba(47, 34, 63, 0.8);
-            padding: 3px 14px;
+            padding: 4px 14px;
             border-radius: 40px;
             border: 1px solid rgba(160, 120, 220, 0.3);
             box-shadow: 0 2px 8px black;
             font-weight: 300;
+            min-height: 30px;
+            display: flex;
+            align-items: center;
         }
         .q-total {
             font-size: 0.65rem;
             color: rgba(180, 160, 200, 0.5);
             background: rgba(47, 34, 63, 0.4);
-            padding: 2px 10px;
+            padding: 3px 10px;
             border-radius: 40px;
             border: 1px solid rgba(160, 120, 220, 0.12);
+            min-height: 28px;
+            display: flex;
+            align-items: center;
         }
         .btn-bookmark {
             background: rgba(47, 34, 63, 0.7);
             border: 1px solid rgba(160, 120, 220, 0.2);
             color: #b8a8c8;
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: 40px;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             cursor: pointer;
             transition: all 0.25s ease;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
@@ -388,6 +404,9 @@
             align-items: center;
             gap: 4px;
             backdrop-filter: blur(4px);
+            min-height: 34px;
+            min-width: 40px;
+            justify-content: center;
         }
         .btn-bookmark:hover {
             background: rgba(93, 68, 115, 0.8);
@@ -406,14 +425,14 @@
 
         .timer-round {
             position: relative;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             flex-shrink: 0;
         }
         .timer-round svg {
             transform: rotate(-90deg);
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
         }
         .timer-round .bg-circle {
             fill: none;
@@ -436,14 +455,14 @@
             left: 50%;
             transform: translate(-50%, -50%);
             color: #e8d5f5;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             text-shadow: 0 0 16px #000000cc;
             letter-spacing: 0.5px;
         }
         .timer-round .timer-text.done {
             color: #96d6b0;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
         }
 
         .question-text {
@@ -459,8 +478,8 @@
             z-index: 1;
             flex: 1;
             overflow-y: auto;
-            min-height: 55px;
-            max-height: 38vh;
+            min-height: 50px;
+            max-height: 36vh;
         }
         .question-text::-webkit-scrollbar {
             width: 2px;
@@ -471,10 +490,10 @@
         }
 
         .answer-box {
-            margin-top: 8px;
+            margin-top: 6px;
             background: rgba(17, 13, 32, 0.9);
             border-radius: 60px;
-            padding: 8px 14px 8px 18px;
+            padding: 6px 12px 6px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -485,15 +504,16 @@
             position: relative;
             z-index: 1;
             flex-shrink: 0;
+            min-height: 50px;
         }
         .answer-text {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #e8d5f5;
             font-weight: 300;
             padding: 4px 0;
             letter-spacing: 0.3px;
             flex: 1;
-            min-width: 60px;
+            min-width: 50px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -510,9 +530,9 @@
             background: rgba(58, 43, 81, 0.85);
             border: 1px solid rgba(160, 120, 220, 0.3);
             color: #e0d0ec;
-            padding: 8px 18px;
+            padding: 10px 22px;
             border-radius: 60px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -521,8 +541,8 @@
             align-items: center;
             gap: 6px;
             backdrop-filter: blur(4px);
-            min-height: 44px;
-            min-width: 48px;
+            min-height: 50px;
+            min-width: 56px;
             justify-content: center;
         }
         .btn-icon:hover {
@@ -548,13 +568,14 @@
 
         .bookmark-status {
             text-align: center;
-            margin-top: 4px;
+            margin-top: 3px;
             color: rgba(180, 160, 200, 0.4);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             letter-spacing: 0.5px;
             position: relative;
             z-index: 1;
             flex-shrink: 0;
+            min-height: 20px;
         }
 
         .nav-controls {
@@ -562,7 +583,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 6px;
-            margin: 8px 0 6px;
+            margin: 6px 0 5px;
             position: relative;
             z-index: 1;
             flex-shrink: 0;
@@ -570,9 +591,9 @@
         .btn-nav {
             background: rgba(43, 31, 56, 0.8);
             border: 1px solid rgba(160, 120, 220, 0.15);
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 60px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
             color: #e0d0ec;
             box-shadow: 0 4px 0 #0f0b12, 0 6px 20px black;
@@ -584,7 +605,8 @@
             flex: 1 0 auto;
             justify-content: center;
             backdrop-filter: blur(4px);
-            min-height: 40px;
+            min-height: 44px;
+            min-width: 80px;
         }
         .btn-nav:active {
             transform: translateY(4px);
@@ -606,12 +628,13 @@
             gap: 6px 10px;
             background: rgba(28, 20, 42, 0.6);
             border-radius: 60px;
-            padding: 6px 16px;
+            padding: 6px 14px;
             border: 1px solid rgba(160, 120, 220, 0.1);
             backdrop-filter: blur(6px);
             position: relative;
             z-index: 1;
             flex-shrink: 0;
+            min-height: 44px;
         }
         .jump-section label {
             color: #c8b8d8;
@@ -622,15 +645,15 @@
             background: rgba(15, 10, 28, 0.8);
             border: 1px solid rgba(160, 120, 220, 0.3);
             border-radius: 60px;
-            padding: 6px 12px;
-            width: 58px;
+            padding: 8px 12px;
+            width: 60px;
             font-size: 1rem;
             font-weight: 500;
             color: #f4e3d0;
             text-align: center;
             outline: none;
             box-shadow: inset 0 2px 12px black;
-            min-height: 36px;
+            min-height: 38px;
         }
         .jump-input:focus {
             border-color: #c8a0e8;
@@ -640,16 +663,17 @@
         .btn-jump-go {
             background: linear-gradient(135deg, #8a6ab8, #6a4a98);
             border: none;
-            padding: 6px 18px;
+            padding: 8px 22px;
             border-radius: 60px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #fff;
             cursor: pointer;
             box-shadow: 0 4px 0 #4a2a68, 0 4px 18px black;
             transition: 0.06s linear;
             border: 1px solid rgba(180, 130, 255, 0.25);
-            min-height: 36px;
+            min-height: 38px;
+            min-width: 60px;
         }
         .btn-jump-go:active {
             transform: translateY(4px);
@@ -659,10 +683,11 @@
         .total-riddles-info {
             text-align: center;
             color: rgba(180, 160, 200, 0.3);
-            font-size: 0.6rem;
-            margin-top: 4px;
+            font-size: 0.55rem;
+            margin-top: 3px;
             letter-spacing: 0.5px;
             flex-shrink: 0;
+            min-height: 18px;
         }
 
         .toast {
@@ -672,12 +697,12 @@
             transform: translateX(-50%) translateY(100px);
             background: rgba(30, 20, 50, 0.95);
             color: #e8d5f5;
-            padding: 10px 22px;
+            padding: 12px 24px;
             border-radius: 50px;
             border: 1px solid rgba(160, 120, 220, 0.25);
             backdrop-filter: blur(10px);
             box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             transition: transform 0.4s ease, opacity 0.4s ease;
             opacity: 0;
             pointer-events: none;
@@ -691,79 +716,85 @@
         }
 
         @media (max-width: 480px) {
-            .app-container { padding: 8px 10px 12px; }
-            h1 { font-size: 1.3rem; padding-bottom: 6px; margin-bottom: 6px; }
-            h1 small { font-size: 0.6rem; padding: 2px 10px; }
-            .btn-home { font-size: 0.75rem; padding: 5px 12px; min-height: 34px; }
-            .category-label { font-size: 0.7rem; padding: 3px 10px; max-width: 40%; }
-            .question-text { font-size: 1.05rem; min-height: 45px; max-height: 32vh; }
-            .answer-text { font-size: 0.95rem; }
-            .q-number { font-size: 0.65rem; padding: 2px 10px; }
-            .btn-nav { font-size: 0.75rem; padding: 6px 12px; min-height: 34px; }
-            .timer-round { width: 42px; height: 42px; }
-            .timer-round svg { width: 42px; height: 42px; }
-            .timer-round .timer-text { font-size: 0.75rem; }
+            .app-container { padding: 6px 8px 10px; }
+            h1 { font-size: 1.2rem; padding-bottom: 5px; margin-bottom: 5px; }
+            h1 small { font-size: 0.55rem; padding: 2px 8px; }
+            .btn-home { font-size: 0.8rem; padding: 6px 14px; min-height: 38px; min-width: 60px; }
+            .category-label { font-size: 0.7rem; padding: 4px 10px; max-width: 40%; min-height: 32px; }
+            .question-text { font-size: 1rem; min-height: 40px; max-height: 30vh; }
+            .answer-text { font-size: 0.9rem; }
+            .q-number { font-size: 0.6rem; padding: 3px 10px; min-height: 26px; }
+            .btn-nav { font-size: 0.75rem; padding: 6px 12px; min-height: 36px; min-width: 60px; }
+            .timer-round { width: 38px; height: 38px; }
+            .timer-round svg { width: 38px; height: 38px; }
+            .timer-round .timer-text { font-size: 0.7rem; }
             .btn-icon {
-                padding: 6px 14px;
+                padding: 8px 16px;
                 font-size: 1rem;
-                min-height: 38px;
-                min-width: 42px;
+                min-height: 42px;
+                min-width: 46px;
             }
-            .question-panel { padding: 10px 12px 10px; border-radius: 18px; }
-            .answer-box { padding: 6px 10px 6px 14px; border-left-width: 4px; margin-top: 6px; }
-            .jump-section { padding: 4px 12px; gap: 4px 8px; }
-            .jump-input { width: 48px; font-size: 0.85rem; padding: 4px 8px; min-height: 30px; }
-            .btn-jump-go { font-size: 0.75rem; padding: 4px 14px; min-height: 30px; }
-            .nav-sidebar { width: 260px; padding: 12px 10px 14px; }
-            .sidebar-categories .cat-btn { font-size: 0.7rem; padding: 6px 10px; }
-            .sidebar-categories .cat-btn .cat-name { font-size: 0.7rem; }
+            .question-panel { padding: 8px 10px 8px; border-radius: 16px; }
+            .answer-box { padding: 5px 8px 5px 12px; border-left-width: 4px; margin-top: 4px; min-height: 42px; }
+            .jump-section { padding: 4px 10px; gap: 4px 6px; min-height: 36px; }
+            .jump-input { width: 48px; font-size: 0.85rem; padding: 4px 8px; min-height: 32px; }
+            .btn-jump-go { font-size: 0.75rem; padding: 4px 14px; min-height: 32px; min-width: 50px; }
+            .nav-sidebar { width: 260px; padding: 10px 8px 12px; }
+            .sidebar-categories .cat-btn { font-size: 0.75rem; padding: 8px 10px; min-height: 38px; }
+            .sidebar-categories .cat-btn .cat-name { font-size: 0.72rem; }
             .sidebar-title { font-size: 0.9rem; }
-            .bookmark-status { font-size: 0.55rem; margin-top: 3px; }
+            .bookmark-status { font-size: 0.5rem; margin-top: 2px; min-height: 16px; }
             .total-riddles-info { font-size: 0.5rem; }
             .action-group { gap: 5px; }
             .q-header-left { gap: 4px; }
-            .btn-bookmark { font-size: 0.65rem; padding: 3px 10px; }
+            .btn-bookmark { font-size: 0.65rem; padding: 3px 10px; min-height: 28px; min-width: 34px; }
+            .btn-close-sidebar { min-height: 30px; min-width: 34px; padding: 4px 10px; font-size: 0.9rem; }
+            .toast { font-size: 0.8rem; padding: 10px 18px; }
         }
 
         @media (max-width: 380px) {
-            .app-container { padding: 4px 6px 8px; }
-            h1 { font-size: 1.1rem; }
-            .question-text { font-size: 0.9rem; min-height: 40px; }
-            .btn-nav { font-size: 0.65rem; padding: 4px 10px; min-height: 30px; }
+            .app-container { padding: 4px 5px 6px; }
+            h1 { font-size: 1rem; }
+            .question-text { font-size: 0.85rem; min-height: 35px; }
+            .btn-nav { font-size: 0.65rem; padding: 4px 10px; min-height: 30px; min-width: 50px; }
             .btn-icon {
-                padding: 5px 10px;
+                padding: 6px 12px;
                 font-size: 0.85rem;
-                min-height: 32px;
-                min-width: 36px;
+                min-height: 36px;
+                min-width: 40px;
             }
-            .answer-text { font-size: 0.8rem; }
-            .q-number { font-size: 0.55rem; padding: 2px 8px; }
-            .timer-round { width: 36px; height: 36px; }
-            .timer-round svg { width: 36px; height: 36px; }
-            .timer-round .timer-text { font-size: 0.65rem; }
-            .btn-home { font-size: 0.65rem; padding: 4px 10px; min-height: 28px; }
+            .answer-text { font-size: 0.75rem; }
+            .q-number { font-size: 0.5rem; padding: 2px 8px; min-height: 22px; }
+            .timer-round { width: 32px; height: 32px; }
+            .timer-round svg { width: 32px; height: 32px; }
+            .timer-round .timer-text { font-size: 0.6rem; }
+            .btn-home { font-size: 0.65rem; padding: 4px 10px; min-height: 30px; min-width: 50px; }
+            .jump-input { width: 40px; font-size: 0.75rem; padding: 3px 6px; min-height: 28px; }
+            .btn-jump-go { font-size: 0.65rem; padding: 4px 10px; min-height: 28px; min-width: 40px; }
+            .btn-bookmark { font-size: 0.55rem; padding: 2px 8px; min-height: 24px; min-width: 30px; }
+            .answer-box { min-height: 36px; padding: 4px 6px 4px 10px; }
         }
 
         @media (max-height: 500px) and (orientation: landscape) {
-            .question-text { max-height: 20vh; font-size: 0.95rem; min-height: 35px; }
-            .question-panel { padding: 8px 12px 8px; }
-            .q-header { margin-bottom: 4px; }
-            .answer-box { margin-top: 4px; padding: 4px 10px 4px 14px; }
-            .nav-controls { margin: 4px 0; }
-            .jump-section { padding: 4px 10px; }
-            h1 { font-size: 1.1rem; padding-bottom: 4px; margin-bottom: 4px; }
-            .timer-round { width: 34px; height: 34px; }
-            .timer-round svg { width: 34px; height: 34px; }
-            .timer-round .timer-text { font-size: 0.6rem; }
-            .menu-toggle-area { margin-bottom: 4px; }
-            .btn-icon {
-                padding: 4px 10px;
-                font-size: 0.85rem;
-                min-height: 30px;
-                min-width: 34px;
-            }
-            .btn-nav { padding: 4px 10px; min-height: 28px; font-size: 0.7rem; }
-            .btn-home { padding: 4px 10px; min-height: 28px; font-size: 0.7rem; }
+            .question-text { max-height: 18vh; font-size: 0.9rem; min-height: 30px; }
+            .question-panel { padding: 6px 10px 6px; }
+            .q-header { margin-bottom: 3px; }
+            .answer-box { margin-top: 3px; padding: 4px 8px 4px 12px; min-height: 34px; }
+            .nav-controls { margin: 3px 0; }
+            .jump-section { padding: 3px 8px; min-height: 30px; }
+            h1 { font-size: 1rem; padding-bottom: 3px; margin-bottom: 3px; }
+            .timer-round { width: 30px; height: 30px; }
+            .timer-round svg { width: 30px; height: 30px; }
+            .timer-round .timer-text { font-size: 0.55rem; }
+            .menu-toggle-area { margin-bottom: 3px; }
+            .btn-icon { padding: 4px 10px; font-size: 0.8rem; min-height: 30px; min-width: 34px; }
+            .btn-nav { padding: 4px 10px; min-height: 28px; font-size: 0.7rem; min-width: 50px; }
+            .btn-home { padding: 4px 10px; min-height: 28px; font-size: 0.7rem; min-width: 50px; }
+            .btn-bookmark { min-height: 24px; min-width: 28px; padding: 2px 8px; font-size: 0.6rem; }
+            .q-number { min-height: 22px; padding: 2px 8px; font-size: 0.55rem; }
+            .jump-input { min-height: 26px; padding: 3px 8px; width: 44px; font-size: 0.75rem; }
+            .btn-jump-go { min-height: 26px; min-width: 40px; padding: 3px 12px; font-size: 0.7rem; }
+            .answer-text { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -841,7 +872,7 @@
 <script>
     (function() {
         // ============================================================
-        // 📌 DATA: 20 CATEGORIES (आप यहाँ 500-1000 पहेलियाँ जोड़ सकते हैं)
+        // 📌 DATA: 20 CATEGORIES
         // ============================================================
         const CATEGORY_NAMES = [
             "🟢 Easy", "👶 Kids", "😂 Funny", "🏡 Daily Life", "🌿 Nature",
@@ -852,7 +883,8 @@
 
         const CATEGORY_ICONS = ["🟢", "👶", "😂", "🏡", "🌿", "🐾", "🟡", "🧠", "📚", "👑", "🔮", "🎯", "🧩", "🌟", "🌈", "🎭", "🏆", "💡", "🎪", "🚀"];
 
-        // प्रत्येक श्रेणी में 5 पहेलियाँ (आप 500-1000 तक बढ़ा सकते हैं)
+        const APP_URL = "https://play.google.com/store/apps/details?id=com.paheli.app";
+
         const CAT_0_EASY = [
             { q: "वह क्या है जिसके दाँत हैं पर मुँह नहीं?", a: "कंघा" },
             { q: "ऐसी कौन सी चीज़ है जो जितनी बड़ी होती है उतना कम दिखती है?", a: "अंधेरा" },
@@ -1282,7 +1314,7 @@
             if (!qData) return '';
             const answer = revealAnswer ? qData.a : 'उत्तर छिपा है';
             const catName = CATEGORY_NAMES[currentCategory].replace(/[^\w\s]/g, '').trim();
-            return `🧩 पहेली (${catName}): ${qData.q}\n✅ उत्तर: ${answer}`;
+            return `🧩 पहेली (${catName}): ${qData.q}\n✅ उत्तर: ${answer}\n\n📲 ऐप डाउनलोड करें: ${APP_URL}`;
         }
 
         function copyFull() {
@@ -1309,7 +1341,8 @@
         function shareWhatsApp() {
             const text = getFullText();
             if (!text) return;
-            const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            const encodedText = encodeURIComponent(text);
+            const url = `https://wa.me/?text=${encodedText}`;
             const win = window.open(url, '_blank');
             if (!win || win.closed || typeof win.closed === 'undefined') { window.location.href = url; }
             showToast('📲 WhatsApp...');
