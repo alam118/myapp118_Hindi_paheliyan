@@ -28,7 +28,7 @@
             background: rgba(25, 18, 45, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            padding: 16px 18px 20px;
+            padding: 12px 14px 16px;
             box-shadow: none;
             border: none;
             border-radius: 0;
@@ -58,35 +58,34 @@
             pointer-events: none;
         }
 
-        /* Status Bar Spacer */
         .status-bar {
-            height: env(safe-area-inset-top, 8px);
+            height: env(safe-area-inset-top, 4px);
             flex-shrink: 0;
         }
 
         h1 {
             text-align: center;
             font-weight: 400;
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             letter-spacing: 1px;
             color: #e8d5f5;
             text-shadow: 0 4px 20px #000000aa, 0 0 30px rgba(160, 120, 220, 0.15);
             border-bottom: 1px solid rgba(180, 130, 255, 0.2);
-            padding-bottom: 12px;
-            margin-bottom: 12px;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
             flex-shrink: 0;
             position: relative;
             z-index: 1;
         }
         h1 small {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             background: rgba(160, 120, 220, 0.15);
-            padding: 2px 16px;
+            padding: 2px 14px;
             border-radius: 80px;
             font-weight: 300;
             color: #d4c0e8;
@@ -95,13 +94,12 @@
             box-shadow: 0 2px 12px #00000040;
         }
 
-        /* ----- Category Menu Toggle ----- */
         .menu-toggle-area {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
-            gap: 10px;
+            margin-bottom: 8px;
+            gap: 8px;
             flex-wrap: wrap;
             flex-shrink: 0;
             position: relative;
@@ -140,7 +138,7 @@
             font-weight: 300;
             letter-spacing: 0.5px;
             background: rgba(47, 34, 63, 0.5);
-            padding: 4px 16px;
+            padding: 4px 14px;
             border-radius: 40px;
             border: 1px solid rgba(160, 120, 220, 0.15);
             white-space: nowrap;
@@ -153,7 +151,7 @@
             color: #e8d5f5;
         }
 
-        /* ----- Side Navigation Menu ----- */
+        /* Sidebar */
         .nav-overlay {
             position: fixed;
             top: 0;
@@ -185,7 +183,7 @@
             box-shadow: 4px 0 40px rgba(0, 0, 0, 0.8);
             z-index: 1000;
             transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 20px 14px 24px;
+            padding: 18px 12px 20px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -209,14 +207,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 14px;
+            padding-bottom: 12px;
             border-bottom: 1px solid rgba(160, 120, 220, 0.15);
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             flex-shrink: 0;
         }
         .sidebar-title {
             color: #e8d5f5;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 400;
             letter-spacing: 1px;
             display: flex;
@@ -224,7 +222,7 @@
             gap: 8px;
         }
         .sidebar-title small {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: rgba(180, 160, 200, 0.5);
             font-weight: 300;
         }
@@ -258,9 +256,9 @@
             background: rgba(47, 34, 63, 0.4);
             border: 1px solid rgba(160, 120, 220, 0.08);
             color: #c8b8d8;
-            padding: 8px 14px;
+            padding: 8px 12px;
             border-radius: 10px;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -289,10 +287,10 @@
         }
         .sidebar-categories .cat-btn .cat-name {
             flex: 1;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
         }
         .sidebar-categories .cat-btn .cat-count {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: rgba(180, 160, 200, 0.4);
             background: rgba(47, 34, 63, 0.4);
             padding: 1px 8px;
@@ -304,21 +302,21 @@
         }
 
         .sidebar-footer {
-            margin-top: 12px;
-            padding-top: 12px;
+            margin-top: 10px;
+            padding-top: 10px;
             border-top: 1px solid rgba(160, 120, 220, 0.1);
             flex-shrink: 0;
             color: rgba(180, 160, 200, 0.3);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-align: center;
             letter-spacing: 0.5px;
         }
 
-        /* ----- Question Panel (Flexible) ----- */
+        /* Question Panel */
         .question-panel {
             background: rgba(26, 18, 42, 0.85);
-            border-radius: 28px;
-            padding: 18px 18px 18px;
+            border-radius: 24px;
+            padding: 14px 16px 14px;
             border: 1px solid rgba(160, 120, 220, 0.15);
             box-shadow: inset 0 4px 20px rgba(0,0,0,0.4), 0 8px 30px rgba(0,0,0,0.4);
             backdrop-filter: blur(4px);
@@ -336,7 +334,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            border-radius: 28px;
+            border-radius: 24px;
             background: linear-gradient(135deg, rgba(160, 120, 220, 0.04), transparent 60%);
             pointer-events: none;
         }
@@ -345,8 +343,8 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 10px;
+            gap: 6px;
+            margin-bottom: 8px;
             position: relative;
             z-index: 1;
             flex-shrink: 0;
@@ -354,22 +352,22 @@
         .q-header-left {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
         }
         .q-number {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #d4c0e8;
             letter-spacing: 1px;
             background: rgba(47, 34, 63, 0.8);
-            padding: 3px 16px;
+            padding: 3px 14px;
             border-radius: 40px;
             border: 1px solid rgba(160, 120, 220, 0.3);
             box-shadow: 0 2px 8px black;
             font-weight: 300;
         }
         .q-total {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: rgba(180, 160, 200, 0.5);
             background: rgba(47, 34, 63, 0.4);
             padding: 2px 10px;
@@ -406,17 +404,16 @@
             content: '⭐ ';
         }
 
-        /* Timer */
         .timer-round {
             position: relative;
-            width: 52px;
-            height: 52px;
+            width: 50px;
+            height: 50px;
             flex-shrink: 0;
         }
         .timer-round svg {
             transform: rotate(-90deg);
-            width: 52px;
-            height: 52px;
+            width: 50px;
+            height: 50px;
         }
         .timer-round .bg-circle {
             fill: none;
@@ -439,14 +436,14 @@
             left: 50%;
             transform: translate(-50%, -50%);
             color: #e8d5f5;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             text-shadow: 0 0 16px #000000cc;
             letter-spacing: 0.5px;
         }
         .timer-round .timer-text.done {
             color: #96d6b0;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
 
         .question-text {
@@ -457,13 +454,13 @@
             text-shadow: 0 3px 14px #00000080;
             word-break: break-word;
             padding-right: 4px;
-            margin-top: 4px;
+            margin-top: 2px;
             position: relative;
             z-index: 1;
             flex: 1;
             overflow-y: auto;
-            min-height: 60px;
-            max-height: 40vh;
+            min-height: 55px;
+            max-height: 38vh;
         }
         .question-text::-webkit-scrollbar {
             width: 2px;
@@ -474,17 +471,17 @@
         }
 
         .answer-box {
-            margin-top: 10px;
+            margin-top: 8px;
             background: rgba(17, 13, 32, 0.9);
             border-radius: 60px;
-            padding: 10px 16px 10px 20px;
+            padding: 8px 14px 8px 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-left: 6px solid #c8a0e8;
+            border-left: 5px solid #c8a0e8;
             box-shadow: 0 6px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(160, 120, 220, 0.1);
-            gap: 8px;
-            flex-wrap: wrap;
+            gap: 6px;
+            flex-wrap: nowrap;
             position: relative;
             z-index: 1;
             flex-shrink: 0;
@@ -496,29 +493,37 @@
             padding: 4px 0;
             letter-spacing: 0.3px;
             flex: 1;
-            min-width: 80px;
+            min-width: 60px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
+
+        /* Larger action buttons */
         .action-group {
             display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
+            gap: 8px;
+            flex-shrink: 0;
             align-items: center;
         }
         .btn-icon {
-            background: rgba(58, 43, 81, 0.8);
-            border: 1px solid rgba(160, 120, 220, 0.25);
+            background: rgba(58, 43, 81, 0.85);
+            border: 1px solid rgba(160, 120, 220, 0.3);
             color: #e0d0ec;
-            padding: 5px 14px;
+            padding: 8px 18px;
             border-radius: 60px;
-            font-size: 0.8rem;
+            font-size: 1.1rem;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
             box-shadow: 0 3px 0 #1f1422, 0 4px 14px black;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
             backdrop-filter: blur(4px);
+            min-height: 44px;
+            min-width: 48px;
+            justify-content: center;
         }
         .btn-icon:hover {
             background: #6a4a88;
@@ -532,8 +537,8 @@
             box-shadow: 0 1px 0 #1f1422;
         }
         .btn-icon.share-wa {
-            background: rgba(31, 74, 60, 0.8);
-            border-color: rgba(103, 179, 139, 0.35);
+            background: rgba(31, 74, 60, 0.85);
+            border-color: rgba(103, 179, 139, 0.4);
             color: #e3f0e8;
         }
         .btn-icon.share-wa:hover {
@@ -543,22 +548,21 @@
 
         .bookmark-status {
             text-align: center;
-            margin-top: 6px;
+            margin-top: 4px;
             color: rgba(180, 160, 200, 0.4);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 0.5px;
             position: relative;
             z-index: 1;
             flex-shrink: 0;
         }
 
-        /* Navigation Controls */
         .nav-controls {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 8px;
-            margin: 10px 0 8px;
+            gap: 6px;
+            margin: 8px 0 6px;
             position: relative;
             z-index: 1;
             flex-shrink: 0;
@@ -566,9 +570,9 @@
         .btn-nav {
             background: rgba(43, 31, 56, 0.8);
             border: 1px solid rgba(160, 120, 220, 0.15);
-            padding: 8px 18px;
+            padding: 8px 16px;
             border-radius: 60px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
             color: #e0d0ec;
             box-shadow: 0 4px 0 #0f0b12, 0 6px 20px black;
@@ -576,10 +580,11 @@
             transition: 0.06s linear;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             flex: 1 0 auto;
             justify-content: center;
             backdrop-filter: blur(4px);
+            min-height: 40px;
         }
         .btn-nav:active {
             transform: translateY(4px);
@@ -593,16 +598,15 @@
             filter: grayscale(0.5);
         }
 
-        /* Jump Section */
         .jump-section {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
-            gap: 6px 12px;
+            gap: 6px 10px;
             background: rgba(28, 20, 42, 0.6);
             border-radius: 60px;
-            padding: 8px 18px;
+            padding: 6px 16px;
             border: 1px solid rgba(160, 120, 220, 0.1);
             backdrop-filter: blur(6px);
             position: relative;
@@ -619,13 +623,14 @@
             border: 1px solid rgba(160, 120, 220, 0.3);
             border-radius: 60px;
             padding: 6px 12px;
-            width: 60px;
+            width: 58px;
             font-size: 1rem;
             font-weight: 500;
             color: #f4e3d0;
             text-align: center;
             outline: none;
             box-shadow: inset 0 2px 12px black;
+            min-height: 36px;
         }
         .jump-input:focus {
             border-color: #c8a0e8;
@@ -635,15 +640,16 @@
         .btn-jump-go {
             background: linear-gradient(135deg, #8a6ab8, #6a4a98);
             border: none;
-            padding: 6px 20px;
+            padding: 6px 18px;
             border-radius: 60px;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #fff;
             cursor: pointer;
             box-shadow: 0 4px 0 #4a2a68, 0 4px 18px black;
             transition: 0.06s linear;
             border: 1px solid rgba(180, 130, 255, 0.25);
+            min-height: 36px;
         }
         .btn-jump-go:active {
             transform: translateY(4px);
@@ -653,13 +659,12 @@
         .total-riddles-info {
             text-align: center;
             color: rgba(180, 160, 200, 0.3);
-            font-size: 0.65rem;
-            margin-top: 6px;
+            font-size: 0.6rem;
+            margin-top: 4px;
             letter-spacing: 0.5px;
             flex-shrink: 0;
         }
 
-        /* Toast */
         .toast {
             position: fixed;
             bottom: 20px;
@@ -685,59 +690,80 @@
             opacity: 1;
         }
 
-        /* Responsive */
         @media (max-width: 480px) {
-            .app-container { padding: 10px 12px 14px; }
-            h1 { font-size: 1.4rem; padding-bottom: 8px; margin-bottom: 8px; }
-            h1 small { font-size: 0.65rem; padding: 2px 12px; }
-            .btn-home { font-size: 0.8rem; padding: 6px 12px; }
-            .category-label { font-size: 0.75rem; padding: 4px 12px; max-width: 40%; }
-            .question-text { font-size: 1.1rem; min-height: 50px; max-height: 35vh; }
+            .app-container { padding: 8px 10px 12px; }
+            h1 { font-size: 1.3rem; padding-bottom: 6px; margin-bottom: 6px; }
+            h1 small { font-size: 0.6rem; padding: 2px 10px; }
+            .btn-home { font-size: 0.75rem; padding: 5px 12px; min-height: 34px; }
+            .category-label { font-size: 0.7rem; padding: 3px 10px; max-width: 40%; }
+            .question-text { font-size: 1.05rem; min-height: 45px; max-height: 32vh; }
             .answer-text { font-size: 0.95rem; }
-            .q-number { font-size: 0.7rem; padding: 2px 12px; }
-            .btn-nav { font-size: 0.8rem; padding: 6px 12px; }
-            .timer-round { width: 44px; height: 44px; }
-            .timer-round svg { width: 44px; height: 44px; }
-            .timer-round .timer-text { font-size: 0.8rem; }
-            .btn-icon { font-size: 0.7rem; padding: 4px 10px; }
-            .question-panel { padding: 12px 12px 14px; border-radius: 20px; }
-            .answer-box { padding: 8px 12px 8px 16px; border-left-width: 4px; }
-            .jump-section { padding: 6px 14px; }
-            .jump-input { width: 50px; font-size: 0.85rem; padding: 4px 10px; }
-            .btn-jump-go { font-size: 0.8rem; padding: 4px 16px; }
-            .nav-sidebar { width: 270px; padding: 14px 10px 16px; }
-            .sidebar-categories .cat-btn { font-size: 0.75rem; padding: 6px 10px; }
-            .sidebar-categories .cat-btn .cat-name { font-size: 0.72rem; }
-            .sidebar-title { font-size: 0.95rem; }
-            .bookmark-status { font-size: 0.6rem; }
-            .total-riddles-info { font-size: 0.55rem; }
+            .q-number { font-size: 0.65rem; padding: 2px 10px; }
+            .btn-nav { font-size: 0.75rem; padding: 6px 12px; min-height: 34px; }
+            .timer-round { width: 42px; height: 42px; }
+            .timer-round svg { width: 42px; height: 42px; }
+            .timer-round .timer-text { font-size: 0.75rem; }
+            .btn-icon {
+                padding: 6px 14px;
+                font-size: 1rem;
+                min-height: 38px;
+                min-width: 42px;
+            }
+            .question-panel { padding: 10px 12px 10px; border-radius: 18px; }
+            .answer-box { padding: 6px 10px 6px 14px; border-left-width: 4px; margin-top: 6px; }
+            .jump-section { padding: 4px 12px; gap: 4px 8px; }
+            .jump-input { width: 48px; font-size: 0.85rem; padding: 4px 8px; min-height: 30px; }
+            .btn-jump-go { font-size: 0.75rem; padding: 4px 14px; min-height: 30px; }
+            .nav-sidebar { width: 260px; padding: 12px 10px 14px; }
+            .sidebar-categories .cat-btn { font-size: 0.7rem; padding: 6px 10px; }
+            .sidebar-categories .cat-btn .cat-name { font-size: 0.7rem; }
+            .sidebar-title { font-size: 0.9rem; }
+            .bookmark-status { font-size: 0.55rem; margin-top: 3px; }
+            .total-riddles-info { font-size: 0.5rem; }
+            .action-group { gap: 5px; }
+            .q-header-left { gap: 4px; }
+            .btn-bookmark { font-size: 0.65rem; padding: 3px 10px; }
         }
 
         @media (max-width: 380px) {
-            .app-container { padding: 6px 8px 10px; }
+            .app-container { padding: 4px 6px 8px; }
             h1 { font-size: 1.1rem; }
-            .question-text { font-size: 0.95rem; }
-            .btn-nav { font-size: 0.7rem; padding: 4px 10px; }
-            .action-group { gap: 4px; }
-            .btn-icon { font-size: 0.6rem; padding: 3px 8px; }
-            .q-header-left { gap: 4px; }
-            .q-number { font-size: 0.6rem; padding: 2px 8px; }
-            .btn-bookmark { font-size: 0.6rem; padding: 2px 8px; }
-        }
-
-        /* Landscape mode */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .question-text { max-height: 25vh; font-size: 1rem; min-height: 40px; }
-            .question-panel { padding: 10px 14px 10px; }
-            .q-header { margin-bottom: 4px; }
-            .answer-box { margin-top: 6px; padding: 6px 12px 6px 16px; }
-            .nav-controls { margin: 4px 0; }
-            .jump-section { padding: 4px 12px; }
-            h1 { font-size: 1.2rem; padding-bottom: 4px; margin-bottom: 4px; }
+            .question-text { font-size: 0.9rem; min-height: 40px; }
+            .btn-nav { font-size: 0.65rem; padding: 4px 10px; min-height: 30px; }
+            .btn-icon {
+                padding: 5px 10px;
+                font-size: 0.85rem;
+                min-height: 32px;
+                min-width: 36px;
+            }
+            .answer-text { font-size: 0.8rem; }
+            .q-number { font-size: 0.55rem; padding: 2px 8px; }
             .timer-round { width: 36px; height: 36px; }
             .timer-round svg { width: 36px; height: 36px; }
             .timer-round .timer-text { font-size: 0.65rem; }
+            .btn-home { font-size: 0.65rem; padding: 4px 10px; min-height: 28px; }
+        }
+
+        @media (max-height: 500px) and (orientation: landscape) {
+            .question-text { max-height: 20vh; font-size: 0.95rem; min-height: 35px; }
+            .question-panel { padding: 8px 12px 8px; }
+            .q-header { margin-bottom: 4px; }
+            .answer-box { margin-top: 4px; padding: 4px 10px 4px 14px; }
+            .nav-controls { margin: 4px 0; }
+            .jump-section { padding: 4px 10px; }
+            h1 { font-size: 1.1rem; padding-bottom: 4px; margin-bottom: 4px; }
+            .timer-round { width: 34px; height: 34px; }
+            .timer-round svg { width: 34px; height: 34px; }
+            .timer-round .timer-text { font-size: 0.6rem; }
             .menu-toggle-area { margin-bottom: 4px; }
+            .btn-icon {
+                padding: 4px 10px;
+                font-size: 0.85rem;
+                min-height: 30px;
+                min-width: 34px;
+            }
+            .btn-nav { padding: 4px 10px; min-height: 28px; font-size: 0.7rem; }
+            .btn-home { padding: 4px 10px; min-height: 28px; font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -750,16 +776,13 @@
         🧩 पहेली <small>20 श्रेणियाँ</small>
     </h1>
 
-    <!-- Menu Toggle Area -->
     <div class="menu-toggle-area">
         <button class="btn-home" id="homeBtn">🏠 होम</button>
         <span class="category-label">📂 <span id="currentCategoryName">Easy</span></span>
     </div>
 
-    <!-- Overlay -->
     <div class="nav-overlay" id="navOverlay"></div>
 
-    <!-- Side Navigation Menu -->
     <div class="nav-sidebar" id="navSidebar">
         <div class="sidebar-header">
             <div class="sidebar-title">
@@ -774,7 +797,6 @@
         </div>
     </div>
 
-    <!-- Question Panel -->
     <div class="question-panel">
         <div class="q-header">
             <div class="q-header-left">
@@ -801,13 +823,11 @@
         <div class="bookmark-status" id="bookmarkStatus">📌 बुकमार्क करें</div>
     </div>
 
-    <!-- Navigation Controls -->
     <div class="nav-controls">
         <button class="btn-nav" id="prevBtn">◀ पिछला</button>
         <button class="btn-nav" id="nextBtn">अगला ▶</button>
     </div>
 
-    <!-- Jump Section -->
     <div class="jump-section">
         <label for="jumpInput">🔢</label>
         <input type="number" id="jumpInput" class="jump-input" min="1" max="5" value="1">
@@ -816,13 +836,12 @@
     <div class="total-riddles-info" id="totalRiddlesInfo">📚 कुल पहेलियाँ: 100</div>
 </div>
 
-<!-- Toast -->
 <div class="toast" id="toast"></div>
 
 <script>
     (function() {
         // ============================================================
-        // 📌 DATA: 20 CATEGORIES
+        // 📌 DATA: 20 CATEGORIES (आप यहाँ 500-1000 पहेलियाँ जोड़ सकते हैं)
         // ============================================================
         const CATEGORY_NAMES = [
             "🟢 Easy", "👶 Kids", "😂 Funny", "🏡 Daily Life", "🌿 Nature",
@@ -833,7 +852,7 @@
 
         const CATEGORY_ICONS = ["🟢", "👶", "😂", "🏡", "🌿", "🐾", "🟡", "🧠", "📚", "👑", "🔮", "🎯", "🧩", "🌟", "🌈", "🎭", "🏆", "💡", "🎪", "🚀"];
 
-        // Category data (5 riddles each - you can add 500-1000 per category)
+        // प्रत्येक श्रेणी में 5 पहेलियाँ (आप 500-1000 तक बढ़ा सकते हैं)
         const CAT_0_EASY = [
             { q: "वह क्या है जिसके दाँत हैं पर मुँह नहीं?", a: "कंघा" },
             { q: "ऐसी कौन सी चीज़ है जो जितनी बड़ी होती है उतना कम दिखती है?", a: "अंधेरा" },
@@ -982,7 +1001,6 @@
             CAT_15_ENTERTAINMENT, CAT_16_CHAMPION, CAT_17_SMART, CAT_18_CIRCUS, CAT_19_SPACE
         ];
 
-        // state
         let currentCategory = 0;
         let currentIndex = 0;
         let revealAnswer = false;
@@ -1060,7 +1078,6 @@
         totalRiddlesInfo.textContent = `📚 कुल पहेलियाँ: ${totalRiddles}`;
         sidebarTotalRiddles.textContent = totalRiddles;
 
-        // Generate sidebar
         function generateSidebar() {
             sidebarCategories.innerHTML = '';
             CATEGORY_NAMES.forEach((name, index) => {
@@ -1108,7 +1125,6 @@
         closeSidebarBtn.addEventListener('click', closeSidebar);
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && sidebarOpen) closeSidebar(); });
 
-        // Bookmark
         function toggleBookmark() {
             const cat = currentCategory;
             const idx = currentIndex;
@@ -1177,7 +1193,6 @@
             updateBookmarkUI();
         }
 
-        // Timer
         function stopTimer() { if (timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
 
         function updateTimerUI(seconds, isDone = false) {
@@ -1300,7 +1315,6 @@
             showToast('📲 WhatsApp...');
         }
 
-        // Events
         prevBtn.addEventListener('click', prev);
         nextBtn.addEventListener('click', next);
         jumpBtn.addEventListener('click', jumpTo);
@@ -1309,12 +1323,10 @@
         shareBtn.addEventListener('click', shareWhatsApp);
         bookmarkBtn.addEventListener('click', toggleBookmark);
 
-        // Init
         progressCircle.style.strokeDasharray = CIRCUMFERENCE;
         categoryLabel.textContent = 'Easy';
         loadCategory(0);
 
-        // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); next(); }
             if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prev(); }
@@ -1323,11 +1335,6 @@
         });
 
         window.addEventListener('beforeunload', () => { stopTimer(); });
-
-        // Handle orientation change
-        window.addEventListener('resize', () => {
-            // Just ensure UI stays responsive
-        });
     })();
 </script>
 </body>
