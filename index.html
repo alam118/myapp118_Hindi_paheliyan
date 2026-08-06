@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>पहेली · 20 श्रेणियाँ</title>
     <style>
         * {
@@ -11,27 +11,31 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', 'Mangal', 'Devanagari New', system-ui, sans-serif;
         }
-        body {
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
             background: linear-gradient(145deg, #0f0c1a, #1a1230);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            margin: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
         }
         .app-container {
-            max-width: 960px;
             width: 100%;
-            background: rgba(25, 18, 45, 0.75);
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            background: rgba(25, 18, 45, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 72px 72px 56px 56px;
-            padding: 30px 28px 34px;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.95), 0 0 0 1.5px rgba(180, 130, 255, 0.2), inset 0 0 60px rgba(130, 80, 200, 0.05);
-            border: 1px solid rgba(180, 130, 255, 0.12);
-            position: relative;
+            padding: 16px 18px 20px;
+            box-shadow: none;
+            border: none;
+            border-radius: 0;
+            display: flex;
+            flex-direction: column;
             overflow: hidden;
+            position: relative;
         }
         .app-container::before {
             content: '';
@@ -53,27 +57,36 @@
             background: radial-gradient(circle at 40% 70%, rgba(100, 80, 200, 0.04), transparent 50%);
             pointer-events: none;
         }
+
+        /* Status Bar Spacer */
+        .status-bar {
+            height: env(safe-area-inset-top, 8px);
+            flex-shrink: 0;
+        }
+
         h1 {
             text-align: center;
             font-weight: 400;
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             letter-spacing: 1px;
             color: #e8d5f5;
             text-shadow: 0 4px 20px #000000aa, 0 0 30px rgba(160, 120, 220, 0.15);
-            border-bottom: 1px solid rgba(180, 130, 255, 0.25);
-            padding-bottom: 18px;
-            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(180, 130, 255, 0.2);
+            padding-bottom: 12px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 14px;
+            gap: 10px;
             flex-wrap: wrap;
+            flex-shrink: 0;
             position: relative;
+            z-index: 1;
         }
         h1 small {
-            font-size: 1.1rem;
+            font-size: 0.8rem;
             background: rgba(160, 120, 220, 0.15);
-            padding: 4px 24px;
+            padding: 2px 16px;
             border-radius: 80px;
             font-weight: 300;
             color: #d4c0e8;
@@ -87,9 +100,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
-            gap: 12px;
+            margin-bottom: 10px;
+            gap: 10px;
             flex-wrap: wrap;
+            flex-shrink: 0;
             position: relative;
             z-index: 10;
         }
@@ -97,15 +111,15 @@
             background: rgba(47, 34, 63, 0.8);
             border: 1px solid rgba(160, 120, 220, 0.3);
             color: #d4c0e8;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 40px;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             cursor: pointer;
             transition: all 0.25s ease;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             backdrop-filter: blur(4px);
         }
         .btn-home:hover {
@@ -122,20 +136,24 @@
         }
         .category-label {
             color: #c8b8d8;
-            font-size: 1rem;
+            font-size: 0.85rem;
             font-weight: 300;
             letter-spacing: 0.5px;
             background: rgba(47, 34, 63, 0.5);
-            padding: 6px 20px;
+            padding: 4px 16px;
             border-radius: 40px;
             border: 1px solid rgba(160, 120, 220, 0.15);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 50%;
         }
         .category-label span {
             font-weight: 500;
             color: #e8d5f5;
         }
 
-        /* ----- Side Navigation Menu (Overlay) ----- */
+        /* ----- Side Navigation Menu ----- */
         .nav-overlay {
             position: fixed;
             top: 0;
@@ -157,17 +175,17 @@
         .nav-sidebar {
             position: fixed;
             top: 0;
-            left: -320px;
-            width: 320px;
-            max-width: 85vw;
+            left: -300px;
+            width: 300px;
+            max-width: 82vw;
             height: 100%;
-            background: rgba(20, 14, 40, 0.97);
+            background: rgba(20, 14, 40, 0.98);
             backdrop-filter: blur(20px);
             border-right: 1px solid rgba(160, 120, 220, 0.2);
             box-shadow: 4px 0 40px rgba(0, 0, 0, 0.8);
             z-index: 1000;
             transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 24px 16px 30px;
+            padding: 20px 14px 24px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -176,7 +194,7 @@
             left: 0;
         }
         .nav-sidebar::-webkit-scrollbar {
-            width: 4px;
+            width: 3px;
         }
         .nav-sidebar::-webkit-scrollbar-track {
             background: rgba(47, 34, 63, 0.3);
@@ -191,22 +209,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 16px;
+            padding-bottom: 14px;
             border-bottom: 1px solid rgba(160, 120, 220, 0.15);
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             flex-shrink: 0;
         }
         .sidebar-title {
             color: #e8d5f5;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 400;
             letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         .sidebar-title small {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: rgba(180, 160, 200, 0.5);
             font-weight: 300;
         }
@@ -214,14 +232,14 @@
             background: rgba(47, 34, 63, 0.6);
             border: 1px solid rgba(160, 120, 220, 0.2);
             color: #c8b8d8;
-            padding: 6px 14px;
+            padding: 4px 12px;
             border-radius: 40px;
-            font-size: 1.2rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
         }
         .btn-close-sidebar:hover {
             background: rgba(93, 68, 115, 0.8);
@@ -232,29 +250,30 @@
         .sidebar-categories {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
             flex: 1;
+            overflow-y: auto;
         }
         .sidebar-categories .cat-btn {
-            background: rgba(47, 34, 63, 0.5);
-            border: 1px solid rgba(160, 120, 220, 0.1);
+            background: rgba(47, 34, 63, 0.4);
+            border: 1px solid rgba(160, 120, 220, 0.08);
             color: #c8b8d8;
-            padding: 10px 16px;
-            border-radius: 12px;
-            font-size: 0.95rem;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 0.85rem;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
             text-align: left;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         .sidebar-categories .cat-btn:hover {
-            background: rgba(93, 68, 115, 0.6);
-            border-color: rgba(160, 120, 220, 0.3);
+            background: rgba(93, 68, 115, 0.5);
+            border-color: rgba(160, 120, 220, 0.2);
             color: #fff;
-            transform: translateX(4px);
+            transform: translateX(3px);
         }
         .sidebar-categories .cat-btn.active {
             background: linear-gradient(135deg, #8a6ab8, #6a4a98);
@@ -264,18 +283,19 @@
             font-weight: 600;
         }
         .sidebar-categories .cat-btn .cat-icon {
-            font-size: 1.2rem;
-            width: 30px;
+            font-size: 1rem;
+            width: 24px;
             text-align: center;
         }
         .sidebar-categories .cat-btn .cat-name {
             flex: 1;
+            font-size: 0.82rem;
         }
         .sidebar-categories .cat-btn .cat-count {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: rgba(180, 160, 200, 0.4);
-            background: rgba(47, 34, 63, 0.5);
-            padding: 2px 10px;
+            background: rgba(47, 34, 63, 0.4);
+            padding: 1px 8px;
             border-radius: 20px;
         }
         .sidebar-categories .cat-btn.active .cat-count {
@@ -284,25 +304,30 @@
         }
 
         .sidebar-footer {
-            margin-top: 16px;
-            padding-top: 16px;
+            margin-top: 12px;
+            padding-top: 12px;
             border-top: 1px solid rgba(160, 120, 220, 0.1);
             flex-shrink: 0;
             color: rgba(180, 160, 200, 0.3);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-align: center;
             letter-spacing: 0.5px;
         }
 
+        /* ----- Question Panel (Flexible) ----- */
         .question-panel {
             background: rgba(26, 18, 42, 0.85);
-            border-radius: 44px;
-            padding: 30px 28px 26px;
-            margin-bottom: 28px;
-            border: 1px solid rgba(160, 120, 220, 0.2);
-            box-shadow: inset 0 4px 20px rgba(0,0,0,0.6), 0 12px 40px rgba(0,0,0,0.5);
+            border-radius: 28px;
+            padding: 18px 18px 18px;
+            border: 1px solid rgba(160, 120, 220, 0.15);
+            box-shadow: inset 0 4px 20px rgba(0,0,0,0.4), 0 8px 30px rgba(0,0,0,0.4);
             backdrop-filter: blur(4px);
             position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            min-height: 0;
         }
         .question-panel::before {
             content: '';
@@ -311,7 +336,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            border-radius: 44px;
+            border-radius: 28px;
             background: linear-gradient(135deg, rgba(160, 120, 220, 0.04), transparent 60%);
             pointer-events: none;
         }
@@ -320,49 +345,50 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 18px;
+            gap: 8px;
+            margin-bottom: 10px;
             position: relative;
             z-index: 1;
+            flex-shrink: 0;
         }
         .q-header-left {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 8px;
             flex-wrap: wrap;
         }
         .q-number {
-            font-size: 0.95rem;
+            font-size: 0.8rem;
             color: #d4c0e8;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             background: rgba(47, 34, 63, 0.8);
-            padding: 4px 24px;
-            border-radius: 60px;
-            border: 1px solid rgba(160, 120, 220, 0.35);
+            padding: 3px 16px;
+            border-radius: 40px;
+            border: 1px solid rgba(160, 120, 220, 0.3);
             box-shadow: 0 2px 8px black;
             font-weight: 300;
         }
         .q-total {
-            font-size: 0.85rem;
-            color: rgba(180, 160, 200, 0.6);
+            font-size: 0.7rem;
+            color: rgba(180, 160, 200, 0.5);
             background: rgba(47, 34, 63, 0.4);
-            padding: 4px 14px;
+            padding: 2px 10px;
             border-radius: 40px;
-            border: 1px solid rgba(160, 120, 220, 0.15);
+            border: 1px solid rgba(160, 120, 220, 0.12);
         }
         .btn-bookmark {
-            background: rgba(47, 34, 63, 0.8);
-            border: 1px solid rgba(160, 120, 220, 0.25);
+            background: rgba(47, 34, 63, 0.7);
+            border: 1px solid rgba(160, 120, 220, 0.2);
             color: #b8a8c8;
-            padding: 6px 16px;
+            padding: 4px 12px;
             border-radius: 40px;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             cursor: pointer;
             transition: all 0.25s ease;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             backdrop-filter: blur(4px);
         }
         .btn-bookmark:hover {
@@ -380,32 +406,32 @@
             content: '⭐ ';
         }
 
-        /* ----- Round Timer ----- */
+        /* Timer */
         .timer-round {
             position: relative;
-            width: 68px;
-            height: 68px;
+            width: 52px;
+            height: 52px;
             flex-shrink: 0;
         }
         .timer-round svg {
             transform: rotate(-90deg);
-            width: 68px;
-            height: 68px;
+            width: 52px;
+            height: 52px;
         }
         .timer-round .bg-circle {
             fill: none;
             stroke: rgba(58, 42, 78, 0.6);
-            stroke-width: 5;
+            stroke-width: 4;
         }
         .timer-round .progress-circle {
             fill: none;
             stroke: #c8a0e8;
-            stroke-width: 5;
+            stroke-width: 4;
             stroke-linecap: round;
-            stroke-dasharray: 157.08;
+            stroke-dasharray: 125.66;
             stroke-dashoffset: 0;
             transition: stroke-dashoffset 0.3s ease, stroke 0.3s;
-            filter: drop-shadow(0 0 8px rgba(160, 120, 220, 0.2));
+            filter: drop-shadow(0 0 8px rgba(160, 120, 220, 0.15));
         }
         .timer-round .timer-text {
             position: absolute;
@@ -413,72 +439,85 @@
             left: 50%;
             transform: translate(-50%, -50%);
             color: #e8d5f5;
-            font-size: 1.2rem;
+            font-size: 0.95rem;
             font-weight: 600;
             text-shadow: 0 0 16px #000000cc;
             letter-spacing: 0.5px;
         }
         .timer-round .timer-text.done {
             color: #96d6b0;
-            font-size: 1rem;
+            font-size: 0.8rem;
         }
+
         .question-text {
-            font-size: 1.85rem;
+            font-size: 1.3rem;
             line-height: 1.5;
             font-weight: 400;
             color: #f5ecfa;
             text-shadow: 0 3px 14px #00000080;
-            min-height: 5.2rem;
             word-break: break-word;
-            padding-right: 6px;
-            margin-top: 6px;
+            padding-right: 4px;
+            margin-top: 4px;
             position: relative;
             z-index: 1;
+            flex: 1;
+            overflow-y: auto;
+            min-height: 60px;
+            max-height: 40vh;
         }
+        .question-text::-webkit-scrollbar {
+            width: 2px;
+        }
+        .question-text::-webkit-scrollbar-thumb {
+            background: #8a6ab8;
+            border-radius: 10px;
+        }
+
         .answer-box {
-            margin-top: 24px;
+            margin-top: 10px;
             background: rgba(17, 13, 32, 0.9);
-            border-radius: 80px;
-            padding: 14px 22px 14px 30px;
+            border-radius: 60px;
+            padding: 10px 16px 10px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-left: 8px solid #c8a0e8;
-            box-shadow: 0 6px 24px rgba(0,0,0,0.6), inset 0 1px 0 rgba(160, 120, 220, 0.1);
-            gap: 12px;
+            border-left: 6px solid #c8a0e8;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(160, 120, 220, 0.1);
+            gap: 8px;
             flex-wrap: wrap;
             position: relative;
             z-index: 1;
+            flex-shrink: 0;
         }
         .answer-text {
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             color: #e8d5f5;
             font-weight: 300;
-            padding: 6px 0;
+            padding: 4px 0;
             letter-spacing: 0.3px;
             flex: 1;
-            min-width: 120px;
+            min-width: 80px;
         }
         .action-group {
             display: flex;
-            gap: 10px;
+            gap: 6px;
             flex-wrap: wrap;
             align-items: center;
         }
         .btn-icon {
             background: rgba(58, 43, 81, 0.8);
-            border: 1px solid rgba(160, 120, 220, 0.3);
+            border: 1px solid rgba(160, 120, 220, 0.25);
             color: #e0d0ec;
-            padding: 8px 20px;
+            padding: 5px 14px;
             border-radius: 60px;
-            font-size: 1rem;
+            font-size: 0.8rem;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 0 #1f1422, 0 4px 14px black;
+            box-shadow: 0 3px 0 #1f1422, 0 4px 14px black;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 5px;
             backdrop-filter: blur(4px);
         }
         .btn-icon:hover {
@@ -489,86 +528,99 @@
             box-shadow: 0 2px 0 #1f1422, 0 4px 14px black;
         }
         .btn-icon:active {
-            transform: translateY(4px);
+            transform: translateY(3px);
             box-shadow: 0 1px 0 #1f1422;
         }
         .btn-icon.share-wa {
             background: rgba(31, 74, 60, 0.8);
-            border-color: rgba(103, 179, 139, 0.4);
+            border-color: rgba(103, 179, 139, 0.35);
             color: #e3f0e8;
         }
         .btn-icon.share-wa:hover {
             background: #2f735a;
             border-color: #9ed6b3;
         }
-        .btn-icon.share-wa:active {
-            background: #1e5e47;
+
+        .bookmark-status {
+            text-align: center;
+            margin-top: 6px;
+            color: rgba(180, 160, 200, 0.4);
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
         }
+
+        /* Navigation Controls */
         .nav-controls {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 12px;
-            margin: 22px 0 18px;
+            gap: 8px;
+            margin: 10px 0 8px;
             position: relative;
             z-index: 1;
+            flex-shrink: 0;
         }
         .btn-nav {
             background: rgba(43, 31, 56, 0.8);
-            border: 1px solid rgba(160, 120, 220, 0.2);
-            padding: 12px 28px;
+            border: 1px solid rgba(160, 120, 220, 0.15);
+            padding: 8px 18px;
             border-radius: 60px;
-            font-size: 1.2rem;
+            font-size: 0.95rem;
             font-weight: 500;
             color: #e0d0ec;
-            box-shadow: 0 6px 0 #0f0b12, 0 6px 20px black;
+            box-shadow: 0 4px 0 #0f0b12, 0 6px 20px black;
             cursor: pointer;
             transition: 0.06s linear;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             flex: 1 0 auto;
             justify-content: center;
             backdrop-filter: blur(4px);
         }
         .btn-nav:active {
-            transform: translateY(6px);
+            transform: translateY(4px);
             box-shadow: 0 1px 0 #0f0b12;
         }
         .btn-nav:disabled {
             opacity: 0.3;
-            transform: translateY(4px);
+            transform: translateY(3px);
             box-shadow: 0 2px 0 #0f0b12;
             pointer-events: none;
             filter: grayscale(0.5);
         }
+
+        /* Jump Section */
         .jump-section {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
-            gap: 10px 16px;
-            background: rgba(28, 20, 42, 0.7);
-            border-radius: 80px;
-            padding: 12px 26px;
-            margin-top: 14px;
-            border: 1px solid rgba(160, 120, 220, 0.15);
+            gap: 6px 12px;
+            background: rgba(28, 20, 42, 0.6);
+            border-radius: 60px;
+            padding: 8px 18px;
+            border: 1px solid rgba(160, 120, 220, 0.1);
             backdrop-filter: blur(6px);
             position: relative;
             z-index: 1;
+            flex-shrink: 0;
         }
         .jump-section label {
             color: #c8b8d8;
             font-weight: 300;
-            font-size: 1.1rem;
+            font-size: 0.85rem;
         }
         .jump-input {
             background: rgba(15, 10, 28, 0.8);
-            border: 1px solid rgba(160, 120, 220, 0.35);
+            border: 1px solid rgba(160, 120, 220, 0.3);
             border-radius: 60px;
-            padding: 10px 18px;
-            width: 90px;
-            font-size: 1.2rem;
+            padding: 6px 12px;
+            width: 60px;
+            font-size: 1rem;
             font-weight: 500;
             color: #f4e3d0;
             text-align: center;
@@ -578,90 +630,122 @@
         .jump-input:focus {
             border-color: #c8a0e8;
             background: rgba(32, 27, 48, 0.9);
-            box-shadow: 0 0 0 4px rgba(160, 120, 220, 0.2);
+            box-shadow: 0 0 0 3px rgba(160, 120, 220, 0.15);
         }
         .btn-jump-go {
             background: linear-gradient(135deg, #8a6ab8, #6a4a98);
             border: none;
-            padding: 10px 32px;
+            padding: 6px 20px;
             border-radius: 60px;
             font-weight: 600;
-            font-size: 1.2rem;
+            font-size: 0.95rem;
             color: #fff;
             cursor: pointer;
-            box-shadow: 0 5px 0 #4a2a68, 0 4px 18px black;
+            box-shadow: 0 4px 0 #4a2a68, 0 4px 18px black;
             transition: 0.06s linear;
-            border: 1px solid rgba(180, 130, 255, 0.3);
+            border: 1px solid rgba(180, 130, 255, 0.25);
         }
         .btn-jump-go:active {
-            transform: translateY(5px);
+            transform: translateY(4px);
             box-shadow: 0 1px 0 #4a2a68;
         }
-        .bookmark-status {
+
+        .total-riddles-info {
             text-align: center;
-            margin-top: 12px;
-            color: rgba(180, 160, 200, 0.5);
-            font-size: 0.85rem;
+            color: rgba(180, 160, 200, 0.3);
+            font-size: 0.65rem;
+            margin-top: 6px;
             letter-spacing: 0.5px;
-            position: relative;
-            z-index: 1;
+            flex-shrink: 0;
         }
-        /* Toast notification */
+
+        /* Toast */
         .toast {
             position: fixed;
-            bottom: 30px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
             background: rgba(30, 20, 50, 0.95);
             color: #e8d5f5;
-            padding: 14px 28px;
-            border-radius: 60px;
-            border: 1px solid rgba(160, 120, 220, 0.3);
+            padding: 10px 22px;
+            border-radius: 50px;
+            border: 1px solid rgba(160, 120, 220, 0.25);
             backdrop-filter: blur(10px);
             box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-            font-size: 1rem;
+            font-size: 0.85rem;
             transition: transform 0.4s ease, opacity 0.4s ease;
             opacity: 0;
             pointer-events: none;
             z-index: 9999;
             white-space: nowrap;
+            max-width: 90%;
         }
         .toast.show {
             transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
-        .total-riddles-info {
-            text-align: center;
-            color: rgba(180, 160, 200, 0.4);
-            font-size: 0.8rem;
-            margin-top: 10px;
-            letter-spacing: 0.5px;
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .app-container { padding: 10px 12px 14px; }
+            h1 { font-size: 1.4rem; padding-bottom: 8px; margin-bottom: 8px; }
+            h1 small { font-size: 0.65rem; padding: 2px 12px; }
+            .btn-home { font-size: 0.8rem; padding: 6px 12px; }
+            .category-label { font-size: 0.75rem; padding: 4px 12px; max-width: 40%; }
+            .question-text { font-size: 1.1rem; min-height: 50px; max-height: 35vh; }
+            .answer-text { font-size: 0.95rem; }
+            .q-number { font-size: 0.7rem; padding: 2px 12px; }
+            .btn-nav { font-size: 0.8rem; padding: 6px 12px; }
+            .timer-round { width: 44px; height: 44px; }
+            .timer-round svg { width: 44px; height: 44px; }
+            .timer-round .timer-text { font-size: 0.8rem; }
+            .btn-icon { font-size: 0.7rem; padding: 4px 10px; }
+            .question-panel { padding: 12px 12px 14px; border-radius: 20px; }
+            .answer-box { padding: 8px 12px 8px 16px; border-left-width: 4px; }
+            .jump-section { padding: 6px 14px; }
+            .jump-input { width: 50px; font-size: 0.85rem; padding: 4px 10px; }
+            .btn-jump-go { font-size: 0.8rem; padding: 4px 16px; }
+            .nav-sidebar { width: 270px; padding: 14px 10px 16px; }
+            .sidebar-categories .cat-btn { font-size: 0.75rem; padding: 6px 10px; }
+            .sidebar-categories .cat-btn .cat-name { font-size: 0.72rem; }
+            .sidebar-title { font-size: 0.95rem; }
+            .bookmark-status { font-size: 0.6rem; }
+            .total-riddles-info { font-size: 0.55rem; }
         }
-        @media (max-width: 550px) {
-            .app-container { padding: 16px; }
-            .question-text { font-size: 1.4rem; }
-            .answer-text { font-size: 1.2rem; }
-            .btn-nav { padding: 10px 14px; font-size: 1rem; }
-            .jump-section { padding: 12px 14px; }
-            .action-group { width: 100%; justify-content: flex-end; }
-            .timer-round { width: 56px; height: 56px; }
-            .timer-round svg { width: 56px; height: 56px; }
-            .timer-round .timer-text { font-size: 1rem; }
-            h1 { font-size: 1.8rem; }
-            .q-header-left { gap: 8px; }
-            .btn-bookmark { font-size: 0.75rem; padding: 4px 12px; }
-            .btn-home { font-size: 0.9rem; padding: 8px 14px; }
-            .category-label { font-size: 0.8rem; padding: 4px 14px; }
-            .toast { font-size: 0.85rem; padding: 10px 20px; white-space: normal; max-width: 90%; }
-            .q-total { font-size: 0.7rem; padding: 2px 10px; }
-            .nav-sidebar { width: 280px; padding: 20px 12px; }
-            .sidebar-categories .cat-btn { font-size: 0.85rem; padding: 8px 12px; }
+
+        @media (max-width: 380px) {
+            .app-container { padding: 6px 8px 10px; }
+            h1 { font-size: 1.1rem; }
+            .question-text { font-size: 0.95rem; }
+            .btn-nav { font-size: 0.7rem; padding: 4px 10px; }
+            .action-group { gap: 4px; }
+            .btn-icon { font-size: 0.6rem; padding: 3px 8px; }
+            .q-header-left { gap: 4px; }
+            .q-number { font-size: 0.6rem; padding: 2px 8px; }
+            .btn-bookmark { font-size: 0.6rem; padding: 2px 8px; }
+        }
+
+        /* Landscape mode */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .question-text { max-height: 25vh; font-size: 1rem; min-height: 40px; }
+            .question-panel { padding: 10px 14px 10px; }
+            .q-header { margin-bottom: 4px; }
+            .answer-box { margin-top: 6px; padding: 6px 12px 6px 16px; }
+            .nav-controls { margin: 4px 0; }
+            .jump-section { padding: 4px 12px; }
+            h1 { font-size: 1.2rem; padding-bottom: 4px; margin-bottom: 4px; }
+            .timer-round { width: 36px; height: 36px; }
+            .timer-round svg { width: 36px; height: 36px; }
+            .timer-round .timer-text { font-size: 0.65rem; }
+            .menu-toggle-area { margin-bottom: 4px; }
         }
     </style>
 </head>
 <body>
 
 <div class="app-container" id="appContainer">
+    <div class="status-bar"></div>
+
     <h1>
         🧩 पहेली <small>20 श्रेणियाँ</small>
     </h1>
@@ -684,26 +768,24 @@
             </div>
             <button class="btn-close-sidebar" id="closeSidebarBtn">✕</button>
         </div>
-        <div class="sidebar-categories" id="sidebarCategories">
-            <!-- Categories will be dynamically generated -->
-        </div>
+        <div class="sidebar-categories" id="sidebarCategories"></div>
         <div class="sidebar-footer">
             कुल पहेलियाँ: <span id="sidebarTotalRiddles">0</span>
         </div>
     </div>
 
+    <!-- Question Panel -->
     <div class="question-panel">
         <div class="q-header">
             <div class="q-header-left">
                 <span class="q-number" id="qNumberDisplay">प्रश्न 1</span>
                 <span class="q-total" id="qTotalDisplay">/ 5</span>
-                <button class="btn-bookmark" id="bookmarkBtn">🔖 बुकमार्क</button>
+                <button class="btn-bookmark" id="bookmarkBtn">🔖</button>
             </div>
-            <!-- Round Timer -->
             <div class="timer-round" id="timerRound">
-                <svg viewBox="0 0 60 60">
-                    <circle class="bg-circle" cx="30" cy="30" r="25" />
-                    <circle class="progress-circle" id="progressCircle" cx="30" cy="30" r="25" />
+                <svg viewBox="0 0 40 40">
+                    <circle class="bg-circle" cx="20" cy="20" r="16" />
+                    <circle class="progress-circle" id="progressCircle" cx="20" cy="20" r="16" />
                 </svg>
                 <span class="timer-text" id="timerText">5</span>
             </div>
@@ -712,27 +794,29 @@
         <div class="answer-box">
             <span class="answer-text" id="answerDisplay">👉 उत्तर छिपा है</span>
             <div class="action-group">
-                <button class="btn-icon share-wa" id="shareWhatsBtn">📲 शेयर</button>
-                <button class="btn-icon" id="copyAnswerBtn">📋 कॉपी</button>
+                <button class="btn-icon share-wa" id="shareWhatsBtn">📲</button>
+                <button class="btn-icon" id="copyAnswerBtn">📋</button>
             </div>
         </div>
-        <div class="bookmark-status" id="bookmarkStatus">📌 बुकमार्क करें और पहेली सहेजें</div>
+        <div class="bookmark-status" id="bookmarkStatus">📌 बुकमार्क करें</div>
     </div>
 
+    <!-- Navigation Controls -->
     <div class="nav-controls">
         <button class="btn-nav" id="prevBtn">◀ पिछला</button>
         <button class="btn-nav" id="nextBtn">अगला ▶</button>
     </div>
 
+    <!-- Jump Section -->
     <div class="jump-section">
-        <label for="jumpInput">🔢 प्रश्न क्र.</label>
+        <label for="jumpInput">🔢</label>
         <input type="number" id="jumpInput" class="jump-input" min="1" max="5" value="1">
         <button class="btn-jump-go" id="jumpBtn">जाएँ</button>
     </div>
     <div class="total-riddles-info" id="totalRiddlesInfo">📚 कुल पहेलियाँ: 100</div>
 </div>
 
-<!-- Toast Notification -->
+<!-- Toast -->
 <div class="toast" id="toast"></div>
 
 <script>
@@ -749,7 +833,7 @@
 
         const CATEGORY_ICONS = ["🟢", "👶", "😂", "🏡", "🌿", "🐾", "🟡", "🧠", "📚", "👑", "🔮", "🎯", "🧩", "🌟", "🌈", "🎭", "🏆", "💡", "🎪", "🚀"];
 
-        // Category 0: Easy
+        // Category data (5 riddles each - you can add 500-1000 per category)
         const CAT_0_EASY = [
             { q: "वह क्या है जिसके दाँत हैं पर मुँह नहीं?", a: "कंघा" },
             { q: "ऐसी कौन सी चीज़ है जो जितनी बड़ी होती है उतना कम दिखती है?", a: "अंधेरा" },
@@ -767,9 +851,9 @@
         const CAT_2_FUNNY = [
             { q: "एक हाथ से ताली नहीं बजती, किसके साथ?", a: "दूसरे हाथ" },
             { q: "मुर्गी क्यों सड़क पार करती है?", a: "दूसरी ओर जाने के लिए" },
-            { q: "किसे देखकर सब हँसते हैं, पर वह खुद कभी नहीं हँसता?", a: "दर्पण (शीशा)" },
+            { q: "किसे देखकर सब हँसते हैं, पर वह खुद कभी नहीं हँसता?", a: "दर्पण" },
             { q: "एक आदमी के पास 5 बोतलें हैं, वह सब कैसे घर ले जाए?", a: "ट्रक से" },
-            { q: "दस आदमी, दस कमरे, एक कमरा खाली?", a: "पहेली (गिनती)" },
+            { q: "दस आदमी, दस कमरे, एक कमरा खाली?", a: "पहेली" },
         ];
         const CAT_3_DAILY = [
             { q: "किसके पास गर्दन है पर सिर नहीं, बाजू है पर हाथ नहीं?", a: "कमीज़" },
@@ -783,7 +867,7 @@
             { q: "मोती बिखरे आसमान, पर न तो कोई चुने न जाने?", a: "तारे" },
             { q: "हर रात बढ़ता है, हर सुबह घटता है?", a: "चाँद" },
             { q: "बिना पानी के तैरता है, बिना हवा के उड़ता है?", a: "सपना" },
-            { q: "हरा है, पर हरी सब्जी नहीं; पेड़ पर लगता है पर फल नहीं?", a: "आम (हरा आम)" },
+            { q: "हरा है, पर हरी सब्जी नहीं; पेड़ पर लगता है पर फल नहीं?", a: "आम" },
         ];
         const CAT_5_ANIMALS = [
             { q: "काला है पर कौआ नहीं, सींग है पर भैंस नहीं?", a: "भैंस" },
@@ -814,7 +898,7 @@
             { q: "सबसे ऊँची चोटी कौन सी?", a: "एवरेस्ट" },
         ];
         const CAT_9_ULTIMATE = [
-            { q: "मैं कौन हूँ? सुबह चलता हूँ, दोपहर झुकता हूँ, रात झुक कर सोता हूँ?", a: "साया (परछाई)" },
+            { q: "मैं कौन हूँ? सुबह चलता हूँ, दोपहर झुकता हूँ, रात झुक कर सोता हूँ?", a: "साया" },
             { q: "ऐसा कौन है जो हर दिन नया जन्म लेता है और हर रात मर जाता है?", a: "दिन" },
             { q: "बिना अक्षरों की किताब, बिना नोटों की बैंक?", a: "दिमाग" },
             { q: "जो कभी नहीं मरता और हमेशा जवान रहता है?", a: "यादें" },
@@ -825,13 +909,13 @@
             { q: "किसके पास चाबी है पर ताला नहीं?", a: "पहेली" },
             { q: "बिना पानी के प्यास बुझाता है?", a: "नींद" },
             { q: "जो दिखता नहीं पर छू सकते हैं?", a: "हवा" },
-            { q: "काला है पर प्रकाश देता है?", a: "बिजली का बल्ब" },
+            { q: "काला है पर प्रकाश देता है?", a: "बल्ब" },
         ];
         const CAT_11_LOGIC = [
             { q: "एक बस में 10 लोग हैं, 5 उतरे, 3 चढ़े, कितने बचे?", a: "8" },
             { q: "कितने महीने में 31 दिन होते हैं?", a: "7" },
             { q: "शून्य से बड़ी सबसे छोटी संख्या क्या है?", a: "1" },
-            { q: "एक अंडा उबालने में 5 मिनट लगते हैं, 10 अंडे उबालने में कितना समय लगेगा?", a: "5 मिनट" },
+            { q: "एक अंडा उबालने में 5 मिनट, 10 अंडे में कितना?", a: "5 मिनट" },
             { q: "किस संख्या का कोई अंत नहीं है?", a: "अनंत" },
         ];
         const CAT_12_PUZZLE = [
@@ -843,13 +927,13 @@
         ];
         const CAT_13_STAR = [
             { q: "रात को चमकता है पर तारा नहीं?", a: "चाँद" },
-            { q: "आसमान में सबसे चमकीला तारा?", a: "सीरियस" },
-            { q: "हमारे सौर मंडल का सबसे बड़ा ग्रह?", a: "बृहस्पति" },
-            { q: "पृथ्वी का उपग्रह कौन है?", a: "चाँद" },
+            { q: "सबसे चमकीला तारा?", a: "सीरियस" },
+            { q: "सबसे बड़ा ग्रह?", a: "बृहस्पति" },
+            { q: "पृथ्वी का उपग्रह?", a: "चाँद" },
             { q: "सूर्य किस गैस से बना है?", a: "हाइड्रोजन" },
         ];
         const CAT_14_COLORFUL = [
-            { q: "इंद्रधनुष में कितने रंग होते हैं?", a: "7" },
+            { q: "इंद्रधनुष में कितने रंग?", a: "7" },
             { q: "लाल है पर खून नहीं?", a: "गुलाब" },
             { q: "पीला है पर सोना नहीं?", a: "नींबू" },
             { q: "हरा है पर पत्ता नहीं?", a: "मेढक" },
@@ -884,11 +968,11 @@
             { q: "बिना कानों के सुनता है?", a: "दिल" },
         ];
         const CAT_19_SPACE = [
-            { q: "पृथ्वी सूर्य का चक्कर कितने दिनों में लगाती है?", a: "365" },
+            { q: "पृथ्वी सूर्य का चक्कर कितने दिनों में?", a: "365" },
             { q: "किस ग्रह को 'लाल ग्रह' कहते हैं?", a: "मंगल" },
-            { q: "सबसे छोटा ग्रह कौन सा है?", a: "बुध" },
+            { q: "सबसे छोटा ग्रह?", a: "बुध" },
             { q: "किस ग्रह के छल्ले हैं?", a: "शनि" },
-            { q: "आकाशगंगा का नाम क्या है?", a: "मिल्की वे" },
+            { q: "आकाशगंगा का नाम?", a: "मिल्की वे" },
         ];
 
         const ALL_CATEGORIES = [
@@ -906,9 +990,8 @@
         let timerInterval = null;
         let timerSeconds = 5;
         const TOTAL_SECONDS = 5;
-        const CIRCUMFERENCE = 2 * Math.PI * 25;
+        const CIRCUMFERENCE = 2 * Math.PI * 16;
         let sidebarOpen = false;
-
         let bookmarks = {};
         let audioCtx = null;
 
@@ -921,10 +1004,10 @@
                 gain.connect(audioCtx.destination);
                 osc.frequency.value = 880;
                 osc.type = 'sine';
-                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+                gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);
                 osc.start(audioCtx.currentTime);
-                osc.stop(audioCtx.currentTime + 0.5);
+                osc.stop(audioCtx.currentTime + 0.4);
                 setTimeout(() => {
                     const osc2 = audioCtx.createOscillator();
                     const gain2 = audioCtx.createGain();
@@ -932,17 +1015,17 @@
                     gain2.connect(audioCtx.destination);
                     osc2.frequency.value = 1108;
                     osc2.type = 'sine';
-                    gain2.gain.setValueAtTime(0.25, audioCtx.currentTime);
-                    gain2.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);
+                    gain2.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                    gain2.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
                     osc2.start(audioCtx.currentTime);
-                    osc2.stop(audioCtx.currentTime + 0.4);
-                }, 150);
+                    osc2.stop(audioCtx.currentTime + 0.3);
+                }, 120);
             } catch(e) {}
         }
 
-        function showToast(message, duration = 2500) {
+        function showToast(msg, duration = 2000) {
             const toast = document.getElementById('toast');
-            toast.textContent = message;
+            toast.textContent = msg;
             toast.classList.add('show');
             clearTimeout(toast._timeout);
             toast._timeout = setTimeout(() => toast.classList.remove('show'), duration);
@@ -972,14 +1055,13 @@
         const sidebarCategories = document.getElementById('sidebarCategories');
         const sidebarTotalRiddles = document.getElementById('sidebarTotalRiddles');
 
-        // Calculate total
         let totalRiddles = 0;
         ALL_CATEGORIES.forEach(cat => totalRiddles += cat.length);
         totalRiddlesInfo.textContent = `📚 कुल पहेलियाँ: ${totalRiddles}`;
         sidebarTotalRiddles.textContent = totalRiddles;
 
-        // Generate sidebar categories
-        function generateSidebarCategories() {
+        // Generate sidebar
+        function generateSidebar() {
             sidebarCategories.innerHTML = '';
             CATEGORY_NAMES.forEach((name, index) => {
                 const btn = document.createElement('button');
@@ -993,20 +1075,16 @@
                 `;
                 sidebarCategories.appendChild(btn);
             });
-            // Add event listeners
             document.querySelectorAll('#sidebarCategories .cat-btn').forEach((btn) => {
                 btn.addEventListener('click', function() {
                     const cat = parseInt(this.dataset.cat);
-                    if (cat !== currentCategory) {
-                        loadCategory(cat);
-                    }
+                    if (cat !== currentCategory) loadCategory(cat);
                     closeSidebar();
                 });
             });
         }
-        generateSidebarCategories();
+        generateSidebar();
 
-        // Sidebar functions
         function openSidebar() {
             sidebarOpen = true;
             navSidebar.classList.add('open');
@@ -1022,54 +1100,42 @@
         }
 
         function toggleSidebar() {
-            if (sidebarOpen) {
-                closeSidebar();
-            } else {
-                openSidebar();
-            }
+            sidebarOpen ? closeSidebar() : openSidebar();
         }
 
         homeBtn.addEventListener('click', toggleSidebar);
         navOverlay.addEventListener('click', closeSidebar);
         closeSidebarBtn.addEventListener('click', closeSidebar);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && sidebarOpen) closeSidebar(); });
 
-        // Close sidebar with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && sidebarOpen) {
-                closeSidebar();
-            }
-        });
-
-        // Bookmark functions
+        // Bookmark
         function toggleBookmark() {
             const cat = currentCategory;
             const idx = currentIndex;
             if (!bookmarks[cat]) bookmarks[cat] = [];
-            const bookmarkIndex = bookmarks[cat].indexOf(idx);
-            if (bookmarkIndex === -1) {
+            const bIdx = bookmarks[cat].indexOf(idx);
+            if (bIdx === -1) {
                 bookmarks[cat].push(idx);
                 bookmarkBtn.classList.add('bookmarked');
-                bookmarkStatus.textContent = '⭐ बुकमार्क किया गया!';
+                bookmarkStatus.textContent = '⭐ बुकमार्क किया!';
                 bookmarkStatus.style.color = '#e8d5f5';
-                showToast('⭐ पहेली बुकमार्क कर दी गई!');
+                showToast('⭐ बुकमार्क किया!');
             } else {
-                bookmarks[cat].splice(bookmarkIndex, 1);
+                bookmarks[cat].splice(bIdx, 1);
                 bookmarkBtn.classList.remove('bookmarked');
-                bookmarkStatus.textContent = '📌 बुकमार्क हटा दिया गया';
-                bookmarkStatus.style.color = 'rgba(180, 160, 200, 0.5)';
-                showToast('📌 बुकमार्क हटा दिया गया');
+                bookmarkStatus.textContent = '📌 बुकमार्क करें';
+                bookmarkStatus.style.color = 'rgba(180, 160, 200, 0.4)';
+                showToast('📌 हटा दिया');
             }
-            try {
-                localStorage.setItem('paheli_bookmarks', JSON.stringify(bookmarks));
-            } catch(e) {}
+            try { localStorage.setItem('paheli_bookmarks', JSON.stringify(bookmarks)); } catch(e) {}
             setTimeout(() => {
                 if (bookmarks[cat] && bookmarks[cat].includes(idx)) {
-                    bookmarkStatus.textContent = '⭐ बुकमार्क किया गया!';
+                    bookmarkStatus.textContent = '⭐ बुकमार्क किया!';
                 } else {
-                    bookmarkStatus.textContent = '📌 बुकमार्क करें और पहेली सहेजें';
-                    bookmarkStatus.style.color = 'rgba(180, 160, 200, 0.5)';
+                    bookmarkStatus.textContent = '📌 बुकमार्क करें';
+                    bookmarkStatus.style.color = 'rgba(180, 160, 200, 0.4)';
                 }
-            }, 2500);
+            }, 2000);
         }
 
         function updateBookmarkUI() {
@@ -1077,31 +1143,27 @@
             const idx = currentIndex;
             if (bookmarks[cat] && bookmarks[cat].includes(idx)) {
                 bookmarkBtn.classList.add('bookmarked');
-                bookmarkStatus.textContent = '⭐ बुकमार्क किया गया!';
+                bookmarkStatus.textContent = '⭐ बुकमार्क किया!';
                 bookmarkStatus.style.color = '#e8d5f5';
             } else {
                 bookmarkBtn.classList.remove('bookmarked');
-                bookmarkStatus.textContent = '📌 बुकमार्क करें और पहेली सहेजें';
-                bookmarkStatus.style.color = 'rgba(180, 160, 200, 0.5)';
+                bookmarkStatus.textContent = '📌 बुकमार्क करें';
+                bookmarkStatus.style.color = 'rgba(180, 160, 200, 0.4)';
             }
         }
 
-        // Load bookmarks
         try {
             const saved = localStorage.getItem('paheli_bookmarks');
             if (saved) {
                 bookmarks = JSON.parse(saved);
                 for (let cat in bookmarks) {
-                    if (bookmarks.hasOwnProperty(cat)) {
-                        const maxLen = ALL_CATEGORIES[parseInt(cat)]?.length || 0;
-                        bookmarks[cat] = bookmarks[cat].filter(idx => idx >= 0 && idx < maxLen);
-                        if (bookmarks[cat].length === 0) delete bookmarks[cat];
-                    }
+                    const maxLen = ALL_CATEGORIES[parseInt(cat)]?.length || 0;
+                    bookmarks[cat] = bookmarks[cat].filter(idx => idx >= 0 && idx < maxLen);
+                    if (bookmarks[cat].length === 0) delete bookmarks[cat];
                 }
             }
         } catch(e) {}
 
-        // Load category
         function loadCategory(catIndex) {
             currentCategory = catIndex;
             currentList = ALL_CATEGORIES[catIndex].map((item, i) => ({ ...item, id: i }));
@@ -1109,7 +1171,6 @@
             revealAnswer = false;
             categoryLabel.textContent = CATEGORY_NAMES[catIndex].replace(/[^\w\s]/g, '').trim();
             updateDisplay();
-            // Update sidebar active state
             document.querySelectorAll('#sidebarCategories .cat-btn').forEach((btn, idx) => {
                 btn.classList.toggle('active', idx === catIndex);
             });
@@ -1117,12 +1178,7 @@
         }
 
         // Timer
-        function stopTimer() {
-            if (timerInterval) {
-                clearInterval(timerInterval);
-                timerInterval = null;
-            }
-        }
+        function stopTimer() { if (timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
 
         function updateTimerUI(seconds, isDone = false) {
             const fraction = seconds / TOTAL_SECONDS;
@@ -1140,10 +1196,7 @@
 
         function startTimer() {
             stopTimer();
-            if (revealAnswer) {
-                updateTimerUI(0, true);
-                return;
-            }
+            if (revealAnswer) { updateTimerUI(0, true); return; }
             timerSeconds = TOTAL_SECONDS;
             updateTimerUI(timerSeconds);
             timerInterval = setInterval(() => {
@@ -1156,7 +1209,7 @@
                         revealAnswer = true;
                         updateDisplay();
                         playTimerEndSound();
-                        showToast('⏰ समय समाप्त! उत्तर दिखा रहा है...');
+                        showToast('⏰ समय समाप्त!');
                     }
                 } else {
                     updateTimerUI(timerSeconds);
@@ -1166,16 +1219,12 @@
 
         function resetTimer() {
             stopTimer();
-            if (revealAnswer) {
-                updateTimerUI(0, true);
-                return;
-            }
+            if (revealAnswer) { updateTimerUI(0, true); return; }
             timerSeconds = TOTAL_SECONDS;
             updateTimerUI(timerSeconds);
             startTimer();
         }
 
-        // Display
         function updateDisplay() {
             const qData = currentList[currentIndex];
             if (!qData) return;
@@ -1183,27 +1232,16 @@
             qNumberDisplay.textContent = `प्रश्न ${num}`;
             qTotalDisplay.textContent = `/ ${currentList.length}`;
             questionDisplay.textContent = qData.q;
-            if (revealAnswer) {
-                answerDisplay.textContent = qData.a;
-            } else {
-                answerDisplay.textContent = '👉 उत्तर छिपा है';
-            }
+            answerDisplay.textContent = revealAnswer ? qData.a : '👉 उत्तर छिपा है';
             prevBtn.disabled = (currentIndex === 0);
             nextBtn.disabled = (currentIndex === currentList.length - 1);
             jumpInput.value = num;
             jumpInput.max = currentList.length;
-
             updateBookmarkUI();
-
-            if (!revealAnswer) {
-                resetTimer();
-            } else {
-                stopTimer();
-                updateTimerUI(0, true);
-            }
+            if (!revealAnswer) resetTimer();
+            else { stopTimer(); updateTimerUI(0, true); }
         }
 
-        // Navigation
         function goTo(index) {
             if (index < 0) index = 0;
             if (index >= currentList.length) index = currentList.length - 1;
@@ -1211,14 +1249,11 @@
                 currentIndex = index;
                 revealAnswer = false;
                 updateDisplay();
-            } else {
-                updateDisplay();
-            }
+            } else { updateDisplay(); }
         }
 
         function next() { if (currentIndex < currentList.length - 1) goTo(currentIndex + 1); }
         function prev() { if (currentIndex > 0) goTo(currentIndex - 1); }
-
         function jumpTo() {
             let val = parseInt(jumpInput.value, 10);
             if (isNaN(val) || val < 1) val = 1;
@@ -1227,11 +1262,10 @@
             goTo(val - 1);
         }
 
-        // Copy & Share
         function getFullText() {
             const qData = currentList[currentIndex];
             if (!qData) return '';
-            const answer = revealAnswer ? qData.a : 'उत्तर छिपा है (5 सेकंड में दिखेगा)';
+            const answer = revealAnswer ? qData.a : 'उत्तर छिपा है';
             const catName = CATEGORY_NAMES[currentCategory].replace(/[^\w\s]/g, '').trim();
             return `🧩 पहेली (${catName}): ${qData.q}\n✅ उत्तर: ${answer}`;
         }
@@ -1240,10 +1274,8 @@
             const text = getFullText();
             if (!text) return;
             if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).then(() => showToast('✅ कॉपी हो गया!')).catch(() => fallbackCopy(text));
-            } else {
-                fallbackCopy(text);
-            }
+                navigator.clipboard.writeText(text).then(() => showToast('✅ कॉपी!')).catch(() => fallbackCopy(text));
+            } else { fallbackCopy(text); }
         }
 
         function fallbackCopy(text) {
@@ -1255,12 +1287,7 @@
             document.body.appendChild(ta);
             ta.focus();
             ta.select();
-            try {
-                document.execCommand('copy');
-                showToast('✅ कॉपी हो गया!');
-            } catch(e) {
-                showToast('❌ कॉपी नहीं हो पाया');
-            }
+            try { document.execCommand('copy'); showToast('✅ कॉपी!'); } catch(e) { showToast('❌ कॉपी नहीं'); }
             document.body.removeChild(ta);
         }
 
@@ -1269,10 +1296,8 @@
             if (!text) return;
             const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
             const win = window.open(url, '_blank');
-            if (!win || win.closed || typeof win.closed === 'undefined') {
-                window.location.href = url;
-            }
-            showToast('📲 WhatsApp खुल रहा है...');
+            if (!win || win.closed || typeof win.closed === 'undefined') { window.location.href = url; }
+            showToast('📲 WhatsApp...');
         }
 
         // Events
@@ -1298,6 +1323,11 @@
         });
 
         window.addEventListener('beforeunload', () => { stopTimer(); });
+
+        // Handle orientation change
+        window.addEventListener('resize', () => {
+            // Just ensure UI stays responsive
+        });
     })();
 </script>
 </body>
